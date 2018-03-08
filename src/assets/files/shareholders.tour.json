@@ -1,0 +1,34 @@
+[{
+    "anchorId": "app.component.menu",
+    "content": "Open Data Innovation (ODIN) facilitates understanding and exploring complex data by creating visual representations creating and linking concepts based on its users' interests",
+    "title": "Open Data Innovation"
+  },
+  {
+    "anchorId": "app.component.navigation",
+    "content": "In this example, we will explore legislative data about Jumpstart Our Business Startups Act (JOBS ACT)",
+    "title": "JOBS ACT"
+  }, {
+    "anchorId": "navigation-view.component.minus",
+    "content": "The user is interested in exploring bills and amendments that relate to shareholders",
+    "title": "Shareholders"
+  }, {
+    "anchorId": "navigation-view.component.plus",
+    "content": "The user can create a concept. Then select fields of interests from the data. In this example, they are the amendment id, sponsor name and description",
+    "title": "Concept"
+  },{
+    "anchorId": "navigation-view.component.minus",
+    "content": "Upon clicking on explore, ODIN creates a visual representation linking relevant terms from the selected fields",
+    "title": "Explore"
+  }, {
+    "anchorId": "app.component.data",
+    "content": "After double clicking on a node or link of a graph relevant data is loaded",
+    "title": "Source Data"
+  }, {
+    "anchorId": "knowledge-view.component.graph",
+    "content": "You can start exploring now!",
+    "title": "The Stage is Yours!"
+  }
+  
+  
+  
+]

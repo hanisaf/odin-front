@@ -1,0 +1,115 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+    <!-- <router-outlet></router-outlet> -->
+    <tour-step-template>
+        <ng-template let-step="step">
+          <mat-card (click)="$event.stopPropagation()">
+            <mat-card-title>
+              {{step?.title}}
+            </mat-card-title>
+            <mat-card-content>
+              {{step?.content}}
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-icon-button [disabled]="!tourService.hasPrev(step)" (click)="tourService.prev()">
+                <mat-icon>chevron_left</mat-icon>
+              </button>
+              <button mat-icon-button [disabled]="!tourService.hasNext(step)" (click)="tourService.next()">
+                <mat-icon>chevron_right</mat-icon>
+              </button>
+              <button mat-button (click)="tourService.end()">End</button>
+            </mat-card-actions>
+          </mat-card>
+        </ng-template>
+      </tour-step-template>
+  <mat-toolbar color="primary">
+    <span>
+      <mat-button-toggle checked="true" (click)="sidenav.toggle()" tourAnchor="app.component.navigation">Navigation</mat-button-toggle>
+
+
+    </span>
+    <span class="example-fill-remaining-space">
+      <div align="center">
+        <mat-menu #menu1="matMenu">
+          <button mat-menu-item (click)="reset()">New workspace</button>
+          <input-file (onFileSelect)="fileChange($event)" [accept]="'.json'">
+          <span class="nofiles">Load workspace</span>
+          <span class="selected">Load workspace</span>
+      </input-file>
+          <!-- <button mat-menu-item (click)="load()" ng-change="openFileDialog()">Load workspace</button> -->
+          <button mat-menu-item (click)="save()">Save workspace</button>
+          <!-- <mat-form-field> -->
+              <!-- <input matInput type="file" placeholder="Load"  accept=".json" (change)="fileChange($event)">  -->
+            <!-- <input type="file" (change)="fileChange($event)" placeholder="Load" accept=".json"> -->
+
+          <!-- </mat-form-field> -->
+          <button mat-menu-item (click)="export('svg')">Export as SVG</button>
+          <button mat-menu-item (click)="about()">About ODIN</button>
+
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="menu1" tourAnchor="app.component.menu">MENU</button>
+
+      </div>
+
+    </span>
+<!-- <span>
+    <div align="center">
+        <mat-menu #menu2="matMenu">
+         
+          <button mat-menu-item (click)="test1()">Test1</button>
+          <button mat-menu-item (click)="test2()">Test2</button>
+          <button mat-menu-item (click)="test3()">Test3</button>
+          
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="menu2">_</button>
+
+
+      </div>
+</span> -->
+    <!-- This fills the remaining space of the current row -->
+
+ 
+    <span>
+      <mat-button-toggle  (click)="sidedat.toggle()" tourAnchor="app.component.data">Data</mat-button-toggle>
+    </span>
+
+  </mat-toolbar>
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" position="start">
+      <app-navigation-view></app-navigation-view>
+    </mat-sidenav>
+    <mat-sidenav #sidedat class="example-sidenav" mode="side" opened="false" position="end">
+      <app-data-view></app-data-view>
+    </mat-sidenav>
+
+    <div class="example-sidenav-content">
+      <app-knowledge-view></app-knowledge-view>
+
+
+    </div>
+
+
+
+  </mat-sidenav-container>
+
+  <mat-toolbar color="secondary">
+    <span></span>
+    <span class="example-fill-remaining-space">
+      <div class="toolbar">
+          <!-- Open Data Innovation. University of Georgia.  -->
+            <strong>OPEN DATA INNOVATION</strong>
+          &#9679;
+          <a href="https://www.uga.edu">
+            <img src="https://brand.uga.edu/uploads/files/GEORGIA-FS-FC.png" alt="UGA" height="50" style="vertical-align:middle"> 
+          </a>
+          &#9679;
+          <a href="https://www.imls.gov">
+            <img src="https://www.imls.gov/sites/default/files/imls_logo_2c.gif" alt="IMLS" height="75" style="vertical-align:middle">
+          </a>          <!-- Funded by Institute of Museum and Library Services          -->
+      </div>
+    </span>
+    <span></span>
+  </mat-toolbar>
+</div>
+
+<!-- <app-messages></app-messages> -->

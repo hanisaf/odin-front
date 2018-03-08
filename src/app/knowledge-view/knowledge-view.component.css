@@ -1,0 +1,49 @@
+/* .navy { color: #001F3F; }
+.blue { color: #0074D9; }
+.aqua { color: #7FDBFF; }
+.teal { color: #39CCCC; }
+.olive { color: #3D9970; }
+.green { color: #2ECC40; }
+.lime { color: #01FF70; }
+.yellow { color: #FFDC00; }
+.orange { color: #FF851B; }
+.red { color: #FF4136; }
+.fuchsia { color: #F012BE; }
+.purple { color: #B10DC9; }
+.maroon { color: #85144B; }
+.white { color: #FFFFFF; }
+.silver { color: #DDDDDD; }
+.gray { color: #AAAAAA; }
+.black { color: #111111; } */
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  
+}
+
+.example-container {
+    width: 90%;
+    height: 100%;
+    /* margin: 10px;
+    border: 1px solid #555; */
+  }
+.example-fill-remaining-space {
+    flex: 1 1 auto;
+  
+  }
+
+.link-btn {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    font-size: 0.8em;
+    padding: 0px;
+  }
+
+  .legend-text {
+    -webkit-text-stroke: 1px black;
+ }

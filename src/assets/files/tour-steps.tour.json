@@ -1,0 +1,25 @@
+[{
+    "anchorId": "app.component.menu",
+    "content": "Use this menu to save, export, or reset the visible graph",
+    "title": "Menu"
+  },
+  {
+    "anchorId": "app.component.navigation",
+    "content": "By clicking on Navigation you can hide or show the left toolbar",
+    "title": "Navigation"
+  }, {
+    "anchorId": "app.component.data",
+    "content": "After double clicking on a node or link of a graph, view documents by clicking on this button",
+    "title": "Data"
+  }, {
+    "anchorId": "navigation-view.component.plus",
+    "content": "Add a new concept by clicking on + button",
+    "title": "Add Concept"
+  }, {
+    "anchorId": "concept-view.component.explore",
+    "content": "Start exploring by clicking here!",
+    "title": "Explore"
+  }
+  
+  
+]

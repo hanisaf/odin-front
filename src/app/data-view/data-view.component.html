@@ -1,0 +1,49 @@
+
+<!-- <div>
+  <mat-form-field>
+    <input matInput placeholder="Data" [(ngModel)]="data">
+  </mat-form-field>
+</div> -->
+
+<div class="button-row">
+    <span matTooltip="Double click on a node or an edge to load data!">
+    <mat-form-field>
+        <mat-select placeholder="Sources" [(ngModel)]="selectedSource">
+          <mat-option *ngFor="let source of dataSources" [value]="source">{{source}}</mat-option>
+        </mat-select>
+      </mat-form-field>      
+    <mat-form-field>
+        <mat-select placeholder="Columns" multiple [(ngModel)]="selectedColumns">
+          <mat-option *ngFor="let column of dataColumns" [value]="column">{{column}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </span>
+                        <button mat-icon-button >
+                          <mat-icon aria-label="Previous" (click)="onPrevious()">navigate_before</mat-icon>
+                        </button>
+                        <mat-chip> {{currentPage + " / " + totalPages}}</mat-chip>
+                       
+                        <button mat-icon-button >
+                          <mat-icon aria-label="Next" (click)="onNext()">navigate_next</mat-icon>
+                        </button>
+</div>
+
+<div class="example-container mat-elevation-z8">  
+        <mat-table [dataSource]="dataSource">
+
+            <ng-container *ngFor="let col of selectedColumns" [matColumnDef]="col">
+                <mat-header-cell *matHeaderCellDef>{{col}} </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{content(element,col)}} </mat-cell>
+              </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="selectedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: selectedColumns;"></mat-row>
+    </mat-table>
+  
+    <!-- <mat-paginator #paginator
+                   [pageSize]="5"
+                   [pageSizeOptions]="[1, 3, 5, 7, 11]"
+                   > 
+    </mat-paginator>-->
+  </div> 
+

@@ -1,0 +1,35 @@
+.example-fill-remaining-space {
+    flex: 1 1 auto;
+  }
+
+  .example-container {
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  } 
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-sidenav {
+    padding: 10px; 
+  }
+
+  .mat-sidenav-backdrop.mat-sidenav-shown {
+    background: none;
+   }
+
+   .toolbar
+   {
+    text-align: center;
+    font-family: Arial;
+    vertical-align:middle;
+   }
+   
+
+   

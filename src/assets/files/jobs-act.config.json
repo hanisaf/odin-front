@@ -1,0 +1,33 @@
+{
+  "//": "json has no comments, this is a workaround",
+  "elastic_url1" : "http://localhost:9200",
+  "elastic_url2": "http://open-data.stream:9999",
+  "elastic_url": "http://vps89211.vps.ovh.ca:9999",
+
+  "//elastic_indices": "restrict to list of indices, no restrictions if empty",
+  "elastic_indices" : ["jobs-congress", "jobs-finance", "jobs-act"], 
+
+  "page_size": 10,
+  "default_index" : "jobs-act",
+  "default_fields" : ["chamber", "sponsor.name", "sponsor.state"],
+  "default_types" : [],
+  "default_query" : "NC",
+  "default_breadth" : 15,
+  "default_certainty" : 1,
+  "default_depth": 0,
+
+  "min_breadth" : 1,
+  "max_breadth" : 50,
+  "min_certainty" : 1,
+  "max_certainty" : 10,
+  "min_depth": 0,
+  "max_depth": 15,
+
+  "default_match": "document",
+  "default_proximity": 3,
+
+  "//hide*": "controls visual components",
+  "hideSources": true,
+  "hideTypes": true,
+  "hideOptions": true
+}

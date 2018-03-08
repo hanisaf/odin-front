@@ -1,0 +1,77 @@
+<div align="center" class="flex-container">
+
+
+
+
+ 
+  <!-- <div> ________ </div> -->
+  <div style="flex-grow: 1" class="legend-text">
+        <em>Legend</em>
+          <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let c of palette">
+              <span style="font-weight:bold">
+                <font [color]="c.color"> {{""+c.text}}</font>
+              </span>
+      
+            </mat-list-item>
+      
+          </mat-list>
+      
+        </div>
+        <div style="flex-grow: 9"> 
+            
+                <graph [graph]="graph" tourAnchor="knowledge-view.component.graph"></graph>
+            
+              </div>    
+        
+
+
+</div>
+
+
+
+
+
+<!-- <mat-drawer-container class="example-container" >
+                <mat-drawer mode="side" opened="true" position="end">
+                        Legend
+                              
+
+                    
+                            
+                
+                </mat-drawer>
+                <mat-drawer-content>
+                                
+
+                </mat-drawer-content>
+              </mat-drawer-container> -->
+
+                                                <!-- <mat-grid-list cols="10">
+                                                                <mat-grid-tile
+                                                                    *ngFor="let c of palette"
+                                                                    colspan="1"
+                                                                    rowspan="1"
+                                                                    [style.background]="c.color">
+                                                                  {{c.text}}
+                                                                </mat-grid-tile>
+                                                              </mat-grid-list> -->
+                            
+                                                              
+<!-- 
+<table style="width:100%">
+                <tr>
+                  <td>
+                                
+
+                  </td>
+                  <td>
+                          
+                                
+                </td> 
+
+                </tr>
+              </table>
+
+
+ -->

@@ -1,0 +1,51 @@
+.mat-button-focus-overlay, .mat-button-ripple {
+    z-index: -1;
+    }
+    .mat-button-focus-overlay {
+    display: none;
+    }
+
+.node-style {
+    cursor: pointer;
+    transition: stroke-width 0.1s ease-out,
+        fill 0.1s ease-out,
+        stroke 0.1s ease-out;
+
+    stroke: rgb(255, 255, 255);
+    stroke-width: 0.25;
+    color: rgb(33, 44, 255);
+}
+
+.selected-circle {
+    stroke: lightgreen;
+    stroke-width: 10px;
+}
+
+.important-circle {
+    stroke:red;
+    stroke-width: 10px;
+}
+
+.node-style .selected {
+    stroke: lightgreen;
+    stroke-width: 10px;
+  }
+  
+.node-name {
+  font-family: 'Lato';
+  text-anchor: middle;
+  /* alignment-baseline: top; */
+  /*font-weight: 300;*/
+  /* fill: white; */
+  stroke : black;
+  fill: gray;
+  stroke-width: 0.5;
+  /* to make the text unselectable*/
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none; 
+}
+.node
+{
+cursor: pointer;
+}
