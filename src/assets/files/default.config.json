@@ -31,6 +31,7 @@
 
   "analytics_enabled": true,
   "track_mouse_movement_enabled": true,
+  "track_mouse_customdimension_id": 1,
   "track_mouse_movement_trigger": "minitems","//accepted values":"interval/minitems",
   "track_mouse_movement_interval": 5,"//in seconds":"should be > 0",
   "track_mouse_movement_minitems": 200,"//minimum positions to send":"should be > 0"
