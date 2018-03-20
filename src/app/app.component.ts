@@ -27,7 +27,7 @@ export class AppComponent {
   @ViewChild('sidedat') sidedat: MatSidenav;
   constructor(private messageService: MessageService, private elasticService: ElasticService, public tourService: TourService, public analyticsService: AnalyticsService, protected localStorage: AsyncLocalStorage, private cookieService: CookieService) {}
   ngOnInit() {
-    let mouseTrackList: { x: number, y: number, t: string }[] = [];
+    let mouseTrackList: { x: number, y: number, t: number }[] = [];
     //load configuration data
     console.log(window.location.href);
     let params = new URL(window.location.href).searchParams;
@@ -96,7 +96,7 @@ export class AppComponent {
           {
             userid = Math.random().toString(36).slice(2); //generate random string as userid
             //this.localStorage.setItem('userid', userid).subscribe(() => {});
-            this.cookieService.set( 'userid', userid );
+            this.cookieService.set('userid', userid );
           }
           
           //set userid into matomo
@@ -112,39 +112,47 @@ export class AppComponent {
                         let obj = e as any;
                         console.log(e);
                         
-                        let mouseData = {"x": obj.clientX, "y": obj.clientY, "t": obj.timeStamp};
+                        let mouseData = {"x": obj.clientX, "y": obj.clientY, "t": Math.round(obj.timeStamp)};
                         mouseTrackList.push(mouseData);
                        // console.log(mouseData);
                        
                        if (Data.CONFIG.track_mouse_movement_trigger  == "minitems")
                         {
                           let mintimes:number = Data.CONFIG.track_mouse_movement_minitems  as number;
-                          if (mintimes>0 && mouseTrackList.length >= mintimes)
+                          if (mintimes>0 && mouseTrackList.length >= mintimes / 20) //it is divided by 20, because of Matomo's limitation of 255 chars
                           {
-                                console.log(mouseTrackList);
+                                
                                 //POST mouseTrackList to the server
+                                //var dataStr = JSON.stringify(mouseTrackList);
+                                var dataStr = mouseTrackList.map(function(val) {
+                                  return val.x + ',' + val.y + ',' + val.t;
+                                }).join(';');
+                                this.messageService.log(dataStr);
+                                _paq.push(['setCustomDimension', Data.CONFIG.track_mouse_customdimension_id, dataStr]); 
+
                                 mouseTrackList.length = 0; //empty the list
                           }
                         }          
                       });
         
-          if (triggertype=="interval")
-          {
-            let interval:number = Data.CONFIG.track_mouse_movement_interval as number;
-            if (interval>0)
-            {
-              let timer = Observable.timer(0,interval*1000);
-              this.timersubscribe = timer.subscribe(t=>
-                {
-                  //this.ticks = t
-                  //POST mouseTrackList to the server
-                  console.log(mouseTrackList);
-                  mouseTrackList.length = 0; //empty the list
-                });
-            }
+          // This section is commented out because of Matomo's 255 char limit: https://github.com/matomo-org/plugin-CustomDimensions/issues/79
+          // if (triggertype=="interval") 
+          // {
+          //   let interval:number = Data.CONFIG.track_mouse_movement_interval as number;
+          //   if (interval>0)
+          //   {
+          //     let timer = Observable.timer(0,interval*1000);
+          //     this.timersubscribe = timer.subscribe(t=>
+          //       {
+          //         //this.ticks = t
+          //         //POST mouseTrackList to the server
+          //         console.log(mouseTrackList);
+          //         mouseTrackList.length = 0; //empty the list
+          //       });
+          //   }
           
           
-          }
+          // }
         }
         
         //#endregion

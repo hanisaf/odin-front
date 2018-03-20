@@ -29,9 +29,9 @@
   "hideTypes": false,
   "hideOptions": false,
 
-  "analytics_enabled": false,
-  "track_mouse_movement_enabled": false,
+  "analytics_enabled": true,
+  "track_mouse_movement_enabled": true,
   "track_mouse_movement_trigger": "minitems","//accepted values":"interval/minitems",
   "track_mouse_movement_interval": 5,"//in seconds":"should be > 0",
-  "track_mouse_movement_minitems": 100,"//minimum positions to send":"should be > 0"
+  "track_mouse_movement_minitems": 200,"//minimum positions to send":"should be > 0"
 }
