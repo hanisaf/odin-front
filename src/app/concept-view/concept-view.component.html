@@ -59,17 +59,17 @@
                 <button mat-icon-button (click)="onExplore()" [tourAnchor]="this.conceptsLength == 1 ? 'concept-view.component.explore' : 'dummy' + this.conceptsLength">
                   <mat-icon aria-label="Explore" matTooltip="Explore your data!">search</mat-icon>
                 </button>
-                <button mat-icon-button>
-                    <mat-icon aria-label="Expand" (click)="onExpand()" matTooltip="Expand selected nodes">add</mat-icon>
+                <button mat-icon-button (click)="onExpand()">
+                    <mat-icon aria-label="Expand" matTooltip="Expand selected nodes">add</mat-icon>
                   </button>
-                  <button mat-icon-button >
-                      <mat-icon aria-label="Link" (click)="onLink()" matTooltip="Link nodes">link</mat-icon>
+                  <button mat-icon-button (click)="onLink()">
+                      <mat-icon aria-label="Link" matTooltip="Link nodes">link</mat-icon>
                     </button>
-                  <button mat-icon-button >
-                    <mat-icon aria-label="Delete" (click)="onDelete()" matTooltip="Delete selected nodes and links">clear</mat-icon>
+                  <button mat-icon-button (click)="onDelete()">
+                    <mat-icon aria-label="Delete" matTooltip="Delete selected nodes and links">clear</mat-icon>
                   </button>  
-                  <button mat-icon-button >
-                    <mat-icon aria-label="Clear" (click)="onClear()" matTooltip="Delete all nodes and links">delete</mat-icon>
+                  <button mat-icon-button (click)="onClear()">
+                    <mat-icon aria-label="Clear" matTooltip="Delete all nodes and links">delete</mat-icon>
                   </button>    
               </div>
         </mat-list-item>        

@@ -6,11 +6,7 @@ import { ElasticService } from './elastic.service';
 import { TourService, IStepOption } from 'ngx-tour-md-menu';
 import {AnalyticsService} from './analytics.service'
 import { AsyncLocalStorage } from 'angular-async-local-storage';
-import { CookieService } from 'ngx-cookie-service';
-import { Observable } from 'rxjs/Rx';
-import { Subscription } from 'rxjs/Subscription';
-import { timer } from 'rxjs/observable/timer';
-import 'rxjs/add/observable/fromEvent';
+
 
 declare const _paq:any;
 @Component({
@@ -21,13 +17,12 @@ declare const _paq:any;
 export class AppComponent {
   title = 'Open Data Innovation';
   navside = true;
-  mousesubscription: Subscription;
-  timersubscribe: Subscription;
+  
   
   @ViewChild('sidedat') sidedat: MatSidenav;
-  constructor(private messageService: MessageService, private elasticService: ElasticService, public tourService: TourService, public analyticsService: AnalyticsService, protected localStorage: AsyncLocalStorage, private cookieService: CookieService) {}
+  constructor(private messageService: MessageService, private elasticService: ElasticService, public tourService: TourService, public analyticsService: AnalyticsService, protected localStorage: AsyncLocalStorage) {}
   ngOnInit() {
-    let mouseTrackList: { x: number, y: number, t: number }[] = [];
+    this.analyticsService.trackevent("Application", "Load","Application Started");
     //load configuration data
     console.log(window.location.href);
     let params = new URL(window.location.href).searchParams;
@@ -49,10 +44,12 @@ export class AppComponent {
               let text = JSON.stringify(res);
               Data.load(text);
               console.log("Data loaded");
+              this.analyticsService.trackevent("Application", "Data","Data Loaded");
             }
           );
         }
         if(tour) {
+          this.analyticsService.trackevent("Application", "Tour","Tour Requested");
           this.tourService.stepShow$.subscribe( (step: IStepOption) => {
             switch (step.stepId){
                 case "step1":
@@ -74,6 +71,7 @@ export class AppComponent {
               console.log("Loading tour"); 
               console.log(res);
               console.log("Tour loaded");
+              this.analyticsService.trackevent("Application", "Tour","Tour Loaded");
               this.tourService.initialize(res as Array<Object>, {
                 route: '',
               });
@@ -83,77 +81,11 @@ export class AppComponent {
         }
         //#region Analytics/Mouse tracking
         if (Data.CONFIG.analytics_enabled)
-        {
-          _paq.push(['trackPageView']);
-          _paq.push(['enableLinkTracking']);
-    
-          let userid = null;
-          //read userid from local storage
-          //this.localStorage.getItem<String>('userid').subscribe((data) => {userid=data;}); 
-          userid = this.cookieService.get('userid');
-          
-          if ( userid == "") //new user?
-          {
-            userid = Math.random().toString(36).slice(2); //generate random string as userid
-            //this.localStorage.setItem('userid', userid).subscribe(() => {});
-            this.cookieService.set('userid', userid );
-          }
-          
-          //set userid into matomo
-          _paq.push(['setUserId', userid]);
-        }
-        if (Data.CONFIG.track_mouse_movement_enabled)
-        {
-          let triggertype:string = Data.CONFIG.track_mouse_movement_trigger;
-          //let flag: boolean = true;
-          this.mousesubscription = 
-            Observable.fromEvent(document, 'mousemove')
-                      .subscribe(e => {
-                        let obj = e as any;
-                        console.log(e);
-                        
-                        let mouseData = {"x": obj.clientX, "y": obj.clientY, "t": Math.round(obj.timeStamp)};
-                        mouseTrackList.push(mouseData);
-                       // console.log(mouseData);
-                       
-                       if (Data.CONFIG.track_mouse_movement_trigger  == "minitems")
-                        {
-                          let mintimes:number = Data.CONFIG.track_mouse_movement_minitems  as number;
-                          if (mintimes>0 && mouseTrackList.length >= mintimes / 20) //it is divided by 20, because of Matomo's limitation of 255 chars
-                          {
-                                
-                                //POST mouseTrackList to the server
-                                //var dataStr = JSON.stringify(mouseTrackList);
-                                var dataStr = mouseTrackList.map(function(val) {
-                                  return val.x + ',' + val.y + ',' + val.t;
-                                }).join(';');
-                                this.messageService.log(dataStr);
-                                _paq.push(['setCustomDimension', Data.CONFIG.track_mouse_customdimension_id, dataStr]); 
-
-                                mouseTrackList.length = 0; //empty the list
-                          }
-                        }          
-                      });
+          this.analyticsService.trackuser();
         
-          // This section is commented out because of Matomo's 255 char limit: https://github.com/matomo-org/plugin-CustomDimensions/issues/79
-          // if (triggertype=="interval") 
-          // {
-          //   let interval:number = Data.CONFIG.track_mouse_movement_interval as number;
-          //   if (interval>0)
-          //   {
-          //     let timer = Observable.timer(0,interval*1000);
-          //     this.timersubscribe = timer.subscribe(t=>
-          //       {
-          //         //this.ticks = t
-          //         //POST mouseTrackList to the server
-          //         console.log(mouseTrackList);
-          //         mouseTrackList.length = 0; //empty the list
-          //       });
-          //   }
-          
-          
-          // }
-        }
+        if (Data.CONFIG.track_mouse_movement_enabled)
+          this.analyticsService.trackmouse();
+        
         
         //#endregion
       }
@@ -173,15 +105,16 @@ export class AppComponent {
   }
 
   save() {
+    this.analyticsService.trackevent("Application", "Data","Wrokspace Saved");
     Data.save();
     this.messageService.info("Workspace saved to console");
   }
   export(format:String)
   {
+    this.analyticsService.trackevent("Application", "Data","Export Requested");
     if (format == "svg")
     {
       var svg = document.getElementById("svg");
-
       let style:string = `<style type="text/css">
     .link {
         stroke: gray;
@@ -277,9 +210,6 @@ export class AppComponent {
   test3() {
     this.elasticService.HTTP("/").subscribe(results=>console.log(results));
   }
-  ngOnDestroy() {
-    this.mousesubscription.unsubscribe();
-    this.timersubscribe.unsubscribe();
-  }
+
 
 }
