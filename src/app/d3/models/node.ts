@@ -48,8 +48,9 @@ export class Node implements ONode {
 
   get color() : string {
     let code = Math.abs(Data.hashCode(this.type));
-    let index = code % Data.cPalette.length;
-    let colour = Data.cPalette[index];
+    //let index = code % Data.cPalette.length;
+    //let colour = Data.cPalette[index];
+    let colour = "#" + Data.intToRGB(code);
     Data.legend(this.type, colour);
     return colour;
   }

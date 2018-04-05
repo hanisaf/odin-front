@@ -134,7 +134,29 @@ export class ElasticService {
     }
     const a = result.map(x => x.substr(1)).sort(); // delete leading dot
     const b = new Set(a);
-    return Array.from(b);
+    let fields = [];
+
+    if(Data.CONFIG.ignore_analyzed_when_keyword_available) {
+      //ignore non-keyword fields if keyword ones are available
+      b.forEach((item)=> {
+        let i = item as String;
+        if(!i.endsWith(".keyword")) {
+          if(b.has( i + ".keyword")) {
+            fields.push(i + ".keyword");
+          } else {
+            fields.push(i);
+          }
+        } else {
+          if(!fields.includes(i)) {
+            fields.push(i);
+          }
+        }
+      });
+    } else {
+      fields = Array.from(b);
+    }
+
+    return fields;
   }
 
   nodeInclusion(nodes: ONode[], node: ONode): boolean {

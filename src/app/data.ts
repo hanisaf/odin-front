@@ -177,6 +177,13 @@ static hashCode = function(s: string) : number {
         h = (h << 5) - h + s.charCodeAt(i++) | 0;
     return h;
   };
+  
+static intToRGB = function(i: number) : string {
+    var c = (i & 0x00FFFFFF)
+    .toString(16)
+    .toUpperCase();
+    return "00000".substring(0, 6 - c.length) + c;
+};
 }
 
 export let CONFIG = Data.CONFIG;
