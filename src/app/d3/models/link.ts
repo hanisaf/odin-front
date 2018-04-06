@@ -1,5 +1,6 @@
 import { Node } from './';
 import {ONode, OLink} from '../../types';
+import { Data } from '../../data';
 
 export class Link implements OLink {
   // optional - defining optional implementation properties - required for relevant typing assistance
@@ -47,6 +48,11 @@ export class Link implements OLink {
     //return Math.log(100*this.weight);
     //return 100*(1+Math.log(this.weight));
     //return Math.max(5, Math.min(50, 100*(1+Math.log(this.weight))));
-    return 5 * (1+Math.log10(100*this.weight));
+    //scale to 0 - 1
+    let a = (0.0 + this.weight - Data.workspaceGraph.minWeight) / (Data.workspaceGraph.maxWeight - Data.workspaceGraph.minWeight);
+    //scale to 1 - 10
+    let b = 1 + a*9;
+    return b;
+    //return 5 * (1+Math.log10(100*this.weight));
   }
 }

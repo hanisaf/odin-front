@@ -1,3 +1,5 @@
+import { MatTextareaAutosize } from "@angular/material";
+
 // d3 Node
 export interface SimulationNodeDatum {
     index?: number;
@@ -38,6 +40,10 @@ export interface OLink extends SimulationLinkDatum<ONode> {
 export interface OGraph {
     nodes: ONode[];
     links: OLink[];
+    //links max and min weight (used to determine thickness when rendering)
+    minWeight, maxWeight : number;
+    //nodes max and min size (used to determine radius when rendering )
+    minSize, maxSize : number;
     // sources: string[];
     duplicate(): OGraph;
     removeSelected(): boolean;

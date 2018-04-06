@@ -37,7 +37,12 @@ export class Node implements ONode {
      //return Math.max(10, Math.min( 45, 3*Math.round(Math.log(1+this.size)) ));
      //return Math.round(Math.log(1+this.size)) ;
      //return Math.max(10, Math.min( 50,  this.size) );
-     return Math.max(5, Math.min(50, 10*(1+Math.log(this.size))));
+    //scale to 0 - 1
+    let a = (0.0 + this.size - Data.workspaceGraph.minSize) / (Data.workspaceGraph.maxSize - Data.workspaceGraph.minSize);
+    //scale to 10 - 50
+    let b = 10 + a*40;
+    return b;
+    //return Math.max(5, Math.min(50, 10*(1+Math.log(this.size))));
      
   }
 

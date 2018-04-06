@@ -6,7 +6,10 @@ export class Graph implements OGraph {
   nodes: ONode[] = [];//TODO change set here
   links: OLink[] = [];
   //sources: string[] = [];
-
+  minWeight=0;
+  maxWeight=0;
+  minSize=0;
+  maxSize=0;
   static readJson(json: any) : OGraph {
     let graph = new Graph();
     for(let l of json.links) {

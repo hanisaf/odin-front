@@ -50,6 +50,24 @@ export class RenderingService {
       if (g && c.active)
         graph.merge(g);
     }
+    //determine max and min weights of links
+    for(const l of graph.links) {
+      if(l.weight > graph.maxWeight) {
+        graph.maxWeight = l.weight;
+      }
+      if(l.weight < graph.minWeight) {
+        graph.minWeight =l.weight;
+      }
+    }
+    //determine max and min size of nodes
+    for(const n of graph.nodes) {
+      if(n.size > graph.maxSize) {
+        graph.maxSize = n.size;
+      }
+      if(n.size < graph.minSize) {
+        graph.minSize = n.size;
+      }
+    }
     return graph;
   }
 
