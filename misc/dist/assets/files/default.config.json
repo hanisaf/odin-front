@@ -1,0 +1,36 @@
+{
+  "elastic_url" : "http://localhost:9200",
+  "//": "restrict to list of indices, no restrictions if empty",
+  "elastic_indices1": ["earning-calls-full", "tweets", "html5"],
+  "elastic_indices" : [], 
+
+  "page_size": 10,
+  "default_index" : "earning-calls",
+  "default_fields" : ["text"],
+  "default_types": [],
+  "default_query" : "compensation",
+  "default_breadth" : 15,
+  "default_certainty" : 1,
+  "default_depth": 0,
+
+  "min_breadth" : 1,
+  "max_breadth" : 50,
+  "min_certainty" : 1,
+  "max_certainty" : 10,
+  "min_depth": 0,
+  "max_depth": 15,
+
+  "ignore_analyzed_when_keyword_available" : false,
+
+  "//hide*": "controls visual components",
+  "hideSources": false,
+  "hideTypes": false,
+  "hideOptions": false,
+
+  "analytics_enabled": true,
+  "track_mouse_movement_enabled": true,
+  "track_mouse_customdimension_id": 1,
+  "track_mouse_movement_trigger": "minitems","//accepted values":"interval/minitems",
+  "track_mouse_movement_interval": 5,"//in seconds":"should be > 0",
+  "track_mouse_movement_minitems": 200,"//minimum positions to send":"should be > 0"
+}
