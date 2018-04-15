@@ -11,7 +11,7 @@ export class Data {
     constructor() {
       }
     //value is set by the build script
-    static build = "Thu Apr  5 21:35:42 EDT 2018";
+    static build = "Sun Apr 15 16:33:10 EDT 2018";
 
     static concepts: Concept[] = [];
     static CONFIG:any = {};
@@ -174,7 +174,7 @@ static hashCode = function(s: string) : number {
     var h = 0, l = s.length, i = 0;
     if ( l > 0 )
       while (i < l)
-        h = (h << 5) - h + s.charCodeAt(i++) | 0;
+        h = (h << 5) - h + 1 + s.charCodeAt(i++) | 0;
     return h;
   };
   
