@@ -9,6 +9,7 @@ import { TourMatMenuModule } from 'ngx-tour-md-menu';
 import { AsyncLocalStorageModule } from 'angular-async-local-storage';
 import { CookieService } from 'ngx-cookie-service';
 
+//import { MdToolbarModule, MdSidenavModule, MdButtonModule, MdChipsModule, MdListModule, MdInputModule } from '@angular/material';
 import { GraphComponent } from './visuals/graph/graph.component';
 import { SHARED_VISUALS } from './visuals/shared';
 import {
@@ -51,7 +52,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
 import {A11yModule} from '@angular/cdk/a11y';
 import {BidiModule} from '@angular/cdk/bidi';
-import {OverlayModule} from '@angular/cdk/overlay';
+import {OverlayModule, OVERLAY_PROVIDERS} from '@angular/cdk/overlay';
 import {PlatformModule} from '@angular/cdk/platform';
 import {ObserversModule} from '@angular/cdk/observers';
 import {PortalModule} from '@angular/cdk/portal';
@@ -96,7 +97,6 @@ const routes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule,
-    
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule, 
@@ -139,16 +139,17 @@ const routes: Routes = [
     PortalModule,
     CommonModule,
     TourModule,
+    TourService,
     AsyncLocalStorageModule,
     TourMatMenuModule.forRoot(),
     RouterModule.forRoot(routes),
-
     BrowserAnimationsModule,
     HttpClientModule,
+    
      
   ],
   providers: [D3Service, MessageService, RenderingService, ElasticService, TourService, AnalyticsService, CookieService],
-  exports: [ ],
+  exports: [ ConceptViewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

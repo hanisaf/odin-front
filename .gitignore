@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/misc/docker/dist
 /tmp
 /out-tsc
 
