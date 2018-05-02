@@ -9,6 +9,12 @@ import { Node, Link } from './d3/index';
 import { OQuery, ONode, OLink, OGraph } from './types';
 import { Graph } from './graph';
 import { Data } from './data';
+import { NgModule } from '@angular/core';
+
+// @NgModule({
+//   exports: [HttpClient]
+// }
+// )
 @Injectable()
 export class ElasticService {
   cache: Map<string, Object>;
@@ -461,3 +467,8 @@ export class ElasticService {
 
 
 }
+// import { NgModule } from '@angular/core';
+// @NgModule({
+//   exports: [HttpClient]
+// }
+// ) export class ElasticServiceD {};

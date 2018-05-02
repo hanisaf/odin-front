@@ -12,6 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 //import { MdToolbarModule, MdSidenavModule, MdButtonModule, MdChipsModule, MdListModule, MdInputModule } from '@angular/material';
 import { GraphComponent } from './visuals/graph/graph.component';
 import { SHARED_VISUALS } from './visuals/shared';
+
 import {
   MatAutocompleteModule,
   MatButtonModule, 
@@ -65,7 +66,6 @@ import { ConceptViewComponent } from './concept-view/concept-view.component';
 import { InputFile } from './inputFile';
 import { MessageService } from './message.service';
 import { AnalyticsService } from './analytics.service'
-import { MessagesComponent } from './messages/messages.component';
 import { RenderingService } from './rendering.service';
 import { ElasticService } from './elastic.service';
 import { RouterModule, Routes } from '@angular/router';
@@ -89,7 +89,6 @@ const routes: Routes = [
     GraphComponent,
     ...SHARED_VISUALS,
     ...D3_DIRECTIVES,
-    MessagesComponent,
     InputFile
   ],
   imports: [
