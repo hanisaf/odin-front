@@ -20,7 +20,7 @@ export class AppComponent {
   
   
   @ViewChild('sidedat') sidedat: MatSidenav;
-  constructor(private messageService: MessageService, private elasticService: ElasticService, public tourService: TourService, public analyticsService: AnalyticsService, protected localStorage: AsyncLocalStorage) {}
+  constructor(private messageService: MessageService, private elasticService: ElasticService, public tourService: TourService, public analyticsService: AnalyticsService/*, protected localStorage: AsyncLocalStorage*/) {}
   ngOnInit() {
     this.analyticsService.trackevent("Application", "Load","Application Started");
     //load configuration data
