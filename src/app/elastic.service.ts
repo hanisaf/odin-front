@@ -24,6 +24,8 @@ export class ElasticService {
   hits = new Map<string, number>();
   lastDataQuery = new Map<string, any>();
   lastQuery;
+  highlight = true;
+  highlighttype = "unified"; //unified, plain, or fvh. Defaults to unified.
 
   pages(index: string): number {
     const num = this.hits.get(index);
@@ -237,7 +239,7 @@ export class ElasticService {
       const res = <Object[]>response['hits']['hits'];
       const items = [];
       for (const r of res)
-        items.push(r['_source']);
+        items.push(this.highlight ? r['highlight']: r['_source']); //if "highlight" is selected then read the results from ['highlight'] property of thie ['hits']['hits']
       return items;
     } else {
       const expansionGraph = this.aggregationGraph(query, response);
@@ -319,8 +321,18 @@ export class ElasticService {
             'bool': {
               'must': q
             }
-          }
+        } 
         };
+
+        if (this.highlight)
+        {
+          request.highlight = {
+            "fields" : {
+                "text" : {"type" : this.highlighttype}
+            }
+            }
+        }
+      
       // ES2.4 syntax
       // request =
       //   {

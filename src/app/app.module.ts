@@ -138,7 +138,7 @@ const routes: Routes = [
     PortalModule,
     CommonModule,
     TourModule,
-    TourService,
+    //TourService,
     AsyncLocalStorageModule,
     TourMatMenuModule.forRoot(),
     RouterModule.forRoot(routes),

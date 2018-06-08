@@ -3,6 +3,8 @@ import { ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Data } from '../data';
 import { ElasticService } from '../elastic.service';
+import { NodeVisualComponent } from '../visuals/shared';
+import { query } from '@angular/animations';
 //import CONFIG from '../app.config';
 @Component({
   selector: 'app-data-view',
@@ -10,11 +12,12 @@ import { ElasticService } from '../elastic.service';
   styleUrls: ['./data-view.component.css']
 })
 export class DataViewComponent implements OnInit {
-  selectedColumns = [];
+  //selectedColumns = [];
+  selectedColumns = ["type","text"];
   //@Input()
   dataColumns = [];
-
   _selectedSource: string;
+  highlight = false;
   get selectedSource() {
     return this._selectedSource;
   }
@@ -43,6 +46,13 @@ export class DataViewComponent implements OnInit {
   }
   dataSource: MatTableDataSource<Object>;
 
+  toggleHighlights()
+  {
+    this.elasticService.highlight = this.highlight;
+    //let query = this.elasticService.previousPage(this.selectedSource);
+    let query = this.elasticService.lastDataQuery.get(this.selectedSource);
+    this.getData(query);
+  }
   update() {
     if(!this._selectedSource) {
       this._selectedSource = this.elasticService.lastDataQuery.keys().next().value;
@@ -51,7 +61,7 @@ export class DataViewComponent implements OnInit {
         this._selectedSource = Data.hits.keys().next().value;
       }
     }
-    this.selectedColumns = [];
+    //this.selectedColumns = [];
     this.dataSource.data = Data.getHit(this.selectedSource);
     this.updateDataColumns();
     //if no selected columns, default will be the default fields from settings
@@ -147,7 +157,12 @@ export class DataViewComponent implements OnInit {
     this.dataSource = new MatTableDataSource<Object>();
     // this.dataSource.paginator = this.paginator;    
     Data.subscribeDataViewComponent(this);
+    this.highlight = elasticService.highlight;
     //Data.addSubscriber(this);
+  }
+  exportcsv()
+  {
+    alert(this._selectedSource );
   }
   ngAfterViewInit() {
     //this.dataSource.paginator = this.paginator;

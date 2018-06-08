@@ -10,6 +10,9 @@ import { ElasticService } from '../elastic.service';
 import {OGraph } from '../types';
 import { RenderingService } from '../rendering.service';
 import { TourService } from 'ngx-tour-core';
+//import { TourService } from 'ngx-tour-md-menu';
+//import { TourStepTemplateService } from './TourStepTemplateService';
+
 @Component({
   selector: 'app-concept-view',
   templateUrl: './concept-view.component.html',

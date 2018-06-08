@@ -6,9 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { ElasticService } from '../elastic.service';
 import { HttpClient, HttpHeaders, HttpParams, HttpHandler } from '@angular/common/http';
 import { TourModule, TourMatMenuModule, TourService } from 'ngx-tour-md-menu';
+//import { TourService } from 'ngx-tour-core';
 import { RenderingService } from '../rendering.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CookieService } from 'ngx-cookie-service';
+//import { TourStepTemplateService } from 'ngx-tour-md-menu/tour-step-template.service';
+//import { TourStepTemplateService } from './TourStepTemplateService';
 
 describe('ConceptViewComponent', () => {
   let component: ConceptViewComponent;

@@ -1,6 +1,6 @@
 {
-  "elastic_url1" : "http://odin.law.uga.edu:9200",
-  "elastic_url" : "http://localhost:9200",
+  "elastic_url" : "http://odin.law.uga.edu:9200",
+  "elastic_url1" : "http://localhost:9200",
   "elastic_url2": "http://open-data.stream:9999",
   "elastic_url3": "http://vps89211.vps.ovh.ca:9999",
   "//": "restrict to list of indices, no restrictions if empty",
@@ -30,8 +30,8 @@
   "hideTypes": false,
   "hideOptions": false,
 
-  "analytics_enabled": true,
-  "track_mouse_movement_enabled": true,
+  "analytics_enabled": false,
+  "track_mouse_movement_enabled": false,
   "track_mouse_customdimension_id": 1,
   "track_mouse_movement_trigger": "minitems","//accepted values":"interval/minitems",
   "track_mouse_movement_interval": 5,"//in seconds":"should be > 0",

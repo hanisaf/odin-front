@@ -7,7 +7,7 @@
 
 <div class="button-row">
     <span matTooltip="Double click on a node or an edge to load data!">
-    <mat-form-field>
+      <mat-form-field>
         <mat-select placeholder="Sources" [(ngModel)]="selectedSource">
           <mat-option *ngFor="let source of dataSources" [value]="source">{{source}}</mat-option>
         </mat-select>
@@ -26,6 +26,9 @@
                         <button mat-icon-button >
                           <mat-icon aria-label="Next" (click)="onNext()">navigate_next</mat-icon>
                         </button>
+            <mat-checkbox [(ngModel)]="highlight" (ngModelChange)="toggleHighlights()">Highlights</mat-checkbox>
+            <button mat-button (click)="exportcsv()">CSV</button>
+            
 </div>
 
 <div class="example-container mat-elevation-z8">  
