@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { D3Service, D3_DIRECTIVES } from './d3';
-import { TourMatMenuModule } from 'ngx-tour-md-menu';
+import { TourMatMenuModule, TourService, TourModule } from 'ngx-tour-md-menu';
 import { AsyncLocalStorageModule } from 'angular-async-local-storage';
 import { CookieService } from 'ngx-cookie-service';
 
@@ -69,7 +69,7 @@ import { AnalyticsService } from './analytics.service'
 import { RenderingService } from './rendering.service';
 import { ElasticService } from './elastic.service';
 import { RouterModule, Routes } from '@angular/router';
-import { TourModule, TourService } from 'ngx-tour-core';
+//import { TourModule, TourService } from 'ngx-tour-core';
 
 const routes: Routes = [
   //{ path: "", component:  },

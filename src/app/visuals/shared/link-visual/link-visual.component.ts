@@ -3,6 +3,7 @@ import { Link } from '../../../d3';
 import { ElasticService } from '../../../elastic.service';
 import {Data} from '../../../data';
 import { MessageService } from '../../../message.service';
+import { Graph } from '../../../graph';
 
 @Component({
   selector: '[linkVisual]',
@@ -23,6 +24,9 @@ import { MessageService } from '../../../message.service';
 })
 export class LinkVisualComponent  {
   @Input('linkVisual') link: Link;
+  @Input('sourceGraph') graph:Graph;
+
+  
   constructor(private elasticService: ElasticService,
   private msg: MessageService) {}
   data() {
@@ -33,7 +37,7 @@ export class LinkVisualComponent  {
     //   sources.add(s);
     this.link.sources.forEach(
       index=> {
-        let query = {kind: "data" as "data", index: index, source: this.link.source, target: this.link.target, page:0, size: Data.CONFIG.page_size};
+        let query = {kind: "data" as "data", index: index, source: this.link.source, target: this.link.target, page:0, size: Data.CONFIG.page_size, selectedFields: this.graph.getSelectedFields()};
         this.elasticService.resetPage(index);
         this.elasticService.DATA(query);
         

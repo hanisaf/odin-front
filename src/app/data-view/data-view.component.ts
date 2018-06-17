@@ -12,12 +12,13 @@ import { query } from '@angular/animations';
   styleUrls: ['./data-view.component.css']
 })
 export class DataViewComponent implements OnInit {
-  //selectedColumns = [];
-  selectedColumns = ["type","text"];
+  //relevantColumns = [];
+  selectedColumns = [];
   //@Input()
   dataColumns = [];
   _selectedSource: string;
   highlight = false;
+
   get selectedSource() {
     return this._selectedSource;
   }
@@ -51,8 +52,14 @@ export class DataViewComponent implements OnInit {
     this.elasticService.highlight = this.highlight;
     //let query = this.elasticService.previousPage(this.selectedSource);
     let query = this.elasticService.lastDataQuery.get(this.selectedSource);
-    this.getData(query);
-  }
+    const results = this.elasticService.OD(query, Data.lastResponse);
+    Data.setHit(query.index, results, query.selectedFields);
+    //this.elasticService.hits
+    //Data.setHit(Data.lastResponse.index, Data.lastResponse.results, Data.lastResponse.selectedFields);
+    //Data.setHit(lastResponse.index, lastResponse.results, lastResponse.selectedFields);
+    //Data.setHit(query.index,)
+    this.update();
+  } 
   update() {
     if(!this._selectedSource) {
       this._selectedSource = this.elasticService.lastDataQuery.keys().next().value;
@@ -61,28 +68,31 @@ export class DataViewComponent implements OnInit {
         this._selectedSource = Data.hits.keys().next().value;
       }
     }
-    //this.selectedColumns = [];
+    this.selectedColumns = [];
     this.dataSource.data = Data.getHit(this.selectedSource);
     this.updateDataColumns();
     //if no selected columns, default will be the default fields from settings
     if(this.selectedColumns.length==0) {
-      for(let col of Data.CONFIG.default_fields) {
+      //for(let col of Data.CONFIG.default_fields) {
+      let f = Data.getSelectedDataFields(this.selectedSource);
+      if(f.length==0) 
+        f = Data.CONFIG.default_fields;
+      for(let col of f) {
         if(this.dataColumns.indexOf(col) > -1 ) {
           this.selectedColumns.push(col);
-        }
+        } 
       }
     }
   } 
   get currentPage() {
     if(this.selectedSource) {return this.elasticService.page.get(this.selectedSource) + 1;}
     else return 0;
-    
   }
+
   get totalPages() {
     if(this.selectedSource) {
       return this.elasticService.pages(this.selectedSource);
     } else return 0;
-    
   }
 
   get pageSize() {
@@ -131,10 +141,9 @@ export class DataViewComponent implements OnInit {
     });
     return res;
   }
-
+  
   updateDataColumns() {
-    //this.update();
-    //let cols = [];
+    //todo Check selected source here
     let result = [];
     let hit = Data.getHit(this.selectedSource);
     if (hit) {
@@ -150,6 +159,7 @@ export class DataViewComponent implements OnInit {
       }
     }
     this.dataColumns= result.map(x=>x.substr(1)).sort(); //delete leading dot;
+    //this.relevantColumns = result.map(x=>x.substr(1)).sort();// ["type","text","status.keyword"];
   }
   ngOnInit() {}
 
@@ -162,8 +172,22 @@ export class DataViewComponent implements OnInit {
   }
   exportcsv()
   {
-    alert(this._selectedSource );
+    var data = this.ConvertToCSV(this.dataSource.data);
+    Data.saveCsv(data, "csv", new Date());
   }
+  ConvertToCSV(objArray) {
+    var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+    var str = '';
+    for (var i = 0; i < array.length; i++) {
+        var line = '';
+        for (var index in array[i]) {
+            if (line != '') line += ','
+            line += array[i][index];
+        }
+        str += line + '\r\n';
+    }
+    return str;
+}
   ngAfterViewInit() {
     //this.dataSource.paginator = this.paginator;
   }

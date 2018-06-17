@@ -9,7 +9,7 @@
 
   "page_size": 10,
   "default_index" : "jobs-act",
-  "default_fields" : ["text"],
+  "default_fields" : ["status_at"],
   "default_types": [],
   "default_query" : "compensation",
   "default_breadth" : 15,

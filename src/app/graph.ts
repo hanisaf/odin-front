@@ -53,6 +53,22 @@ export class Graph implements OGraph {
 
   }
 
+  getSelectedFields(): string[] {
+    //TODO fix it
+    let fields = new Set<string>();
+    for(let link of this.links) {
+      if(link.source.selected)
+        fields.add(link.source.type);
+      if(link.target.selected)
+        fields.add(link.target.type);
+    }
+    for(let node of this.nodes) {
+      if(node.selected)
+        fields.add(node.type);
+    }
+
+  return Array.from(fields.values());
+  }
 
   removeSelected() : boolean {
     for(let link of this.links) 

@@ -8,11 +8,17 @@ import { Observable } from 'rxjs/Observable';
 import { Subject }    from 'rxjs/Subject';
 import {HttpClient} from  '@angular/common/http';
 export class Data {
+    
+    static setLastResponse(response: any): any {
+    //this.lastResponse = {results : "", index :"",  selectedFields: []}; //to store last data query to be used in data-view component
+           this.lastResponse = response;
+  }
     constructor() {
       }
     //value is set by the build script
     static build = "Sun Apr 15 16:33:10 EDT 2018";
 
+    static lastResponse: any = {};
     static concepts: Concept[] = [];
     static CONFIG:any = {};
       
@@ -26,11 +32,22 @@ export class Data {
     static hits: Map<string, Object[]> = new Map<string, Object[]>();    
     static  getHit(index: string): Object[] {
         let h = this.hits.get(index);
-        return h;
+        return  h.slice(0,h.length-1); //last element is selectedDataFields
     }
 
-    static setHit(index: string, nh: Object[]) {
+    static getSelectedDataFields(index: string): string[] {
+        let h = this.hits.get(index);
+        return <string[]> h[h.length-1];
+    }
+    static setHit(index: string, nh: Object[], selectedDataFields: string[]) {
+        nh.push(selectedDataFields);
+        //nh.push([selectedDataFields[0]["type"]]);
         this.hits.set(index, nh);
+        this.dataView.update();
+    };
+    static updateHit(hit: Map<string, Object[]>)
+    {
+        this.hits = hit;
         this.dataView.update();
     };
 
@@ -76,6 +93,17 @@ export class Data {
         let dateString = fc.created.toLocaleDateString().replace(/\//g,"-");
         let timeString = fc.created.toLocaleTimeString().replace(/:/g,"-").replace(/ /g,"");
         downloadAnchor.setAttribute("download", "odin-v" + fc.version + "_" + dateString + "_" + timeString + ".json");
+        downloadAnchor.click();
+        downloadAnchor.remove();
+    }
+    /** General save function  */
+    static saveCsv(fileContents, extension, datetime) {
+        var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(fileContents));
+        var downloadAnchor = document.createElement('a');
+        downloadAnchor.setAttribute("href", dataStr);
+        let dateString = datetime.toLocaleDateString().replace(/\//g,"-");
+        let timeString = datetime.toLocaleTimeString().replace(/:/g,"-").replace(/ /g,"");
+        downloadAnchor.setAttribute("download", "odin-" + dateString + "_" + timeString + "." + extension);
         downloadAnchor.click();
         downloadAnchor.remove();
     }

@@ -3,18 +3,16 @@
     "configurations": [
         
         {
-            "type": "chrome",
-            "request": "launch",
-            "name": "Launch Chrome against localhost",
-            "url": "http://localhost:4200",
-            "webRoot": "${workspaceFolder}"
-        },
-        {
+            "name": "Attach to Chrome, with sourcemaps",
             "type": "chrome",
             "request": "attach",
-            "name": "Attach to Chrome",
             "port": 9222,
-            "webRoot": "${workspaceFolder}"
+            "sourceMaps": true,
+            "webRoot": "${workspaceRoot}/src",
+            "url": "http://localhost:4200/",
+            "sourceMapPathOverrides": {
+              "webpack:///*": "/*"
+            }
         }
     ]
 }

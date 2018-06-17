@@ -8,6 +8,7 @@ import {Data} from '../../../data';
 // import CONFIG from '../../../app.config';
 
 import { MessageService } from '../../../message.service';
+import { Graph } from '../../../graph';
 //import {LongPressDirective} from '../../../d3/directives/longpress.directive'
 @Component({
   selector: '[nodeVisual]',
@@ -92,7 +93,7 @@ export class NodeVisualComponent implements OnInit {
     return check;
   }
   @Input('nodeVisual') node: Node;
-
+  @Input('sourceGraph') graph:Graph;
   // clickAction(obj,event) {
   //   var self = this;
   //   this.timer = setTimeout(function() {
@@ -118,7 +119,7 @@ export class NodeVisualComponent implements OnInit {
     //console.log(this.node);
     //this.backendService.getData(this.node);
     for(let index of this.node.sources) {
-      let query = {kind: "data" as "data", index: index, source: this.node, page:0, size: Data.CONFIG.page_size};
+      let query = {kind: "data" as "data", index: index, source: this.node, page:0, size: Data.CONFIG.page_size, selectedFields: this.graph.getSelectedFields()};
       this.elasticService.resetPage(index);
       this.elasticService.DATA(query);
       // .subscribe(

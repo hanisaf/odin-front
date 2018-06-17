@@ -9,9 +9,8 @@ import { Data } from '../data';
 import { ElasticService } from '../elastic.service';
 import {OGraph } from '../types';
 import { RenderingService } from '../rendering.service';
-import { TourService } from 'ngx-tour-core';
-//import { TourService } from 'ngx-tour-md-menu';
-//import { TourStepTemplateService } from './TourStepTemplateService';
+//import { TourService } from 'ngx-tour-core';
+import { TourService } from 'ngx-tour-md-menu';
 
 @Component({
   selector: 'app-concept-view',
@@ -85,12 +84,10 @@ export class ConceptViewComponent implements OnInit {
     this.elasticService.EL(query)
     .subscribe(
       response => {
-        this.concept.sources = this.elasticService.OD(query, response);
-        this.changeIndex();
+          this.concept.sources = this.elasticService.OD(query, response);
+          this.changeIndex();
       }
       );
-        
-      
   }
 
   changeIndex() {
@@ -118,7 +115,6 @@ export class ConceptViewComponent implements OnInit {
   }
 
   onRedo() {
-    
     if(this.validIndex(this.pointer+1, this.graphs)) {
       this.replace = true;
       this.pointer = this.pointer + 1;
@@ -158,8 +154,6 @@ export class ConceptViewComponent implements OnInit {
       //phrase: this.concept.phrase
     };
     this.elasticService.ODIN_RECURSIVE(query, this.graphSource);
-
-
   }
 
   onExpand() {

@@ -10,9 +10,11 @@ import { geoStream } from 'd3';
     <svg id="svg" #svg [attr.width]="options.width" [attr.height]="options.height"  >
       <g [zoomableOf]="svg">
         <g [linkVisual]="link" *ngFor="let link of graph.links"
-        [draggable]="link" [draggableInGraph]="d3graph"></g>
+        [draggable]="link" [draggableInGraph]="d3graph"
+        [sourceGraph]="graph"></g>
         <g [nodeVisual]="node" *ngFor="let node of graph.nodes"
-            [draggable]="node" [draggableInGraph]="d3graph"></g> 
+            [draggable]="node" [draggableInGraph]="d3graph"
+            [sourceGraph]="graph"></g> 
       </g>
     </svg>
   `,

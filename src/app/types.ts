@@ -54,7 +54,7 @@ export interface OGraph {
 
 export type OQuery = { kind: 'indices' } |
 { kind: 'fields', index: string } | { kind: 'types', index: string } |
-{ kind: 'data', index: string, source: ONode, target?: ONode, page: number, size: number } |
+{ kind: 'data', index: string, source: ONode, target?: ONode, page: number, size: number, selectedFields: string[] } |
 { kind: 'search', index: string, text?: string, match?: 'document' | 'sentence' | 'exact',
 from_date?: string, to_date?: string, contains: ONode[],
 fields: string[], types?: string[], include?: ONode[], exclude?: ONode[], certainty: number, breadth: number, depth: number};

@@ -25,6 +25,7 @@ export class Concept {
       // this.match_type = Data.CONFIG.default_match as "document" | "sentence" | "exact";
       this.expanded = true;
       this.selectedTypes = Data.CONFIG.default_types;
+      this.selectedDataFields = Data.CONFIG.default_fields;
     }
     
     id: number;
@@ -44,6 +45,7 @@ export class Concept {
     query: string;
     source: string ;
     selectedFields;
+    selectedDataFields;
     fields ;
     selectedTypes;
     types;

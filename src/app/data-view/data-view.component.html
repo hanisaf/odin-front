@@ -15,6 +15,7 @@
     <mat-form-field>
         <mat-select placeholder="Columns" multiple [(ngModel)]="selectedColumns">
           <mat-option *ngFor="let column of dataColumns" [value]="column">{{column}}</mat-option>
+          <!-- <mat-option *ngFor="let column of relevantColumns" [value]="column">{{column}}</mat-option> -->
         </mat-select>
       </mat-form-field>
     </span>
@@ -36,7 +37,7 @@
 
             <ng-container *ngFor="let col of selectedColumns" [matColumnDef]="col">
                 <mat-header-cell *matHeaderCellDef>{{col}} </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{content(element,col)}} </mat-cell>
+                <mat-cell *matCellDef="let element"> <div innerHTML="{{content(element,col)}}"></div>  </mat-cell>
               </ng-container>
   
       <mat-header-row *matHeaderRowDef="selectedColumns"></mat-header-row>

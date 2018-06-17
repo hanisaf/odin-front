@@ -9,7 +9,7 @@ import { Node, Link } from './d3/index';
 import { OQuery, ONode, OLink, OGraph } from './types';
 import { Graph } from './graph';
 import { Data } from './data';
-import { NgModule } from '@angular/core';
+import { forEach } from '@angular/router/src/utils/collection';
 
 // @NgModule({
 //   exports: [HttpClient]
@@ -22,10 +22,12 @@ export class ElasticService {
   // for data pagination
   page = new Map<string, number>();
   hits = new Map<string, number>();
+  selectedDataFields = new Map<string, any>();
   lastDataQuery = new Map<string, any>();
   lastQuery;
-  highlight = true;
-  highlighttype = "unified"; //unified, plain, or fvh. Defaults to unified.
+  lastResponse: any ={};
+  highlight = true; //if true, includes the highlights
+  highlighttype = "plain"; //unified, plain, or fvh. Defaults to unified.
 
   pages(index: string): number {
     const num = this.hits.get(index);
@@ -213,9 +215,17 @@ export class ElasticService {
     if (query.kind === 'data')
       this.EL(query).subscribe(
         response => {
+          
           const results = this.OD(query, response);
           const index = query.index;
-          Data.setHit(index, results);
+          const selectedFields = query.selectedFields; 
+
+          //this.lastResponse = {results : "", index :"",  selectedFields: []}; //to store last data query to be used in data-view component
+          // this.lastResponse.results = results;
+          // this.lastResponse.index = index;
+          // this.lastResponse.selectedFields = selectedFields;
+          Data.setLastResponse(response);
+          Data.setHit(index, results, selectedFields);
           this.msg.info('loaded ' + results.length + ' from ' + this.hits.get(index) + ' ' + index + ' documents');
         }
       );
@@ -324,14 +334,27 @@ export class ElasticService {
         } 
         };
 
-        if (this.highlight)
-        {
-          request.highlight = {
-            "fields" : {
-                "text" : {"type" : this.highlighttype}
-            }
-            }
-        }
+        var jsonStr = '{"fields" : { }}';
+        var obj = JSON.parse(jsonStr);
+        query.selectedFields.forEach((field) => {
+          obj["fields"][field] = {"type" : this.highlighttype};
+        }); 
+
+        request.highlight = obj;  
+        // request.highlight = {
+        //     "fields" : {
+        //         "text" : {"type" : this.highlighttype} ,
+        //        "status_at" : {"type" : this.highlighttype} 
+        //     }
+        //     }
+        // }
+
+        // request.highlight = {
+        //   "require_field_match": false,
+        //   "fields": {
+        //           "_all" : { "pre_tags" : ["<em>"], "post_tags" : ["</em>"] }
+        //   }
+        // };
       
       // ES2.4 syntax
       // request =

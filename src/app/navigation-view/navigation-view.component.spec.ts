@@ -1,21 +1,18 @@
 import { NavigationViewComponent } from './navigation-view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatFormFieldModule, MatFormField, MatAccordion, MatInput, MatExpansionPanel, MatSlideToggle, MatExpansionPanelTitle, MatExpansionPanelHeader, MatOption, MatSelect, MatIcon, MatDatepicker, MatSlider, MatDatepickerToggle, MatExpansionPanelDescription, MatDatepickerModule, MatToolbar, MatMenu, MatButtonToggle, MatDatepickerInput, MatPseudoCheckbox, ErrorStateMatcher, MatIconModule, MatRippleModule } from '@angular/material';
+import {  MatFormField, MatAccordion, MatInput, MatExpansionPanel, MatSlideToggle, MatExpansionPanelTitle, MatExpansionPanelHeader, MatOption, MatSelect, MatDatepicker, MatSlider, MatDatepickerToggle, MatExpansionPanelDescription, MatDatepickerInput, MatPseudoCheckbox, ErrorStateMatcher, MatIconModule, MatRippleModule } from '@angular/material';
 import { ConceptViewComponent } from '../concept-view/concept-view.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClient, HttpHeaders, HttpParams, HttpHandler } from '@angular/common/http';
-import { MatSnackBar, MatListItem, MatRipple } from '@angular/material';
+import { MatSnackBar, MatListItem } from '@angular/material';
 import { MatList} from '@angular/material/list'; 
 import { Overlay, ScrollDispatcher, ViewportRuler, OverlayContainer, OverlayPositionBuilder, OverlayKeyboardDispatcher, CdkOverlayOrigin, ScrollStrategyOptions, ScrollStrategy, OverlayModule } from '@angular/cdk/overlay';
 import { Platform } from '@angular/cdk/platform';
 import { LiveAnnouncer, } from '@angular/cdk/a11y'; 
-import { BreakpointObserver, Breakpoints, MediaMatcher} from '@angular/cdk/layout'; 
+import { BreakpointObserver, MediaMatcher} from '@angular/cdk/layout'; 
 import { RenderingService } from '../rendering.service';
-import { GraphComponent } from '../visuals/graph/graph.component';
-import { ZoomableDirective, DraggableDirective, D3Service } from '../d3';
-import { LinkVisualComponent, NodeVisualComponent } from '../visuals/shared';
 import { MessageService } from '../message.service';
-import { TourAnchorMatMenuDirective, TourService, TourModule, TourMatMenuModule } from 'ngx-tour-md-menu';
+import { TourService, TourModule, TourMatMenuModule } from 'ngx-tour-md-menu';
 import { CdkPortalOutlet, PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -43,6 +40,8 @@ describe('NavigationViewComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(NavigationViewComponent);
     component = fixture.componentInstance;
+    //component.concept_name="test";
+    //component.addConcept();
     fixture.detectChanges();
   });
 
