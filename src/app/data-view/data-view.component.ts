@@ -30,6 +30,12 @@ export class DataViewComponent implements OnInit {
   // @ViewChild(MatPaginator) paginator: MatPaginator;
 
   content(object, key) {
+    //object has its value in object[0], and if highlight available, the highlight is in object[0]
+    //so, we decide which one to show by eliminating one of the dimensions
+    if (this.highlight && object[1] && object[1][key]) //if highlight is enabled, and highlight object is available, and current column's (key's) highlight is available
+      object = object[1];
+    else 
+      object = object[0];
     //parse nested keys
     if(key.includes(".")) {
       let res = object;
@@ -49,16 +55,16 @@ export class DataViewComponent implements OnInit {
 
   toggleHighlights()
   {
-    this.elasticService.highlight = this.highlight;
+   // this.elasticService.highlight = this.highlight;
     //let query = this.elasticService.previousPage(this.selectedSource);
-    let query = this.elasticService.lastDataQuery.get(this.selectedSource);
-    const results = this.elasticService.OD(query, Data.lastResponse);
-    Data.setHit(query.index, results, query.selectedFields);
+   // let query = this.elasticService.lastDataQuery.get(this.selectedSource);
+   // const results = this.elasticService.OD(query, Data.lastResponse);
+   // Data.setHit(query.index, results, query.selectedFields);
     //this.elasticService.hits
     //Data.setHit(Data.lastResponse.index, Data.lastResponse.results, Data.lastResponse.selectedFields);
     //Data.setHit(lastResponse.index, lastResponse.results, lastResponse.selectedFields);
     //Data.setHit(query.index,)
-    this.update();
+    //this.update();
   } 
   update() {
     if(!this._selectedSource) {
@@ -148,8 +154,8 @@ export class DataViewComponent implements OnInit {
     let hit = Data.getHit(this.selectedSource);
     if (hit) {
       for(let item of hit) {
-        if(item) {
-          let cols = this.flatten("", item);
+        if(item[0]) { //item[0] is the "source" or actual value, and item[1] is the highlight, if available. In this loop, since we need all column names, we read data from item[0]
+          let cols = this.flatten("", item[0]);
           for(let col of cols) {
             if(!result.includes(col))
               result.push(col);

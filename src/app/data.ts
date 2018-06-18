@@ -45,11 +45,11 @@ export class Data {
         this.hits.set(index, nh);
         this.dataView.update();
     };
-    static updateHit(hit: Map<string, Object[]>)
-    {
-        this.hits = hit;
-        this.dataView.update();
-    };
+    // static updateHit(hit: Map<string, Object[]>)
+    // {
+    //     this.hits = hit;
+    //     this.dataView.update();
+    // };
 
     static palette:{color:string, text:string[]}[] = [];
 

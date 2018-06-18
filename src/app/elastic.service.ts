@@ -249,7 +249,10 @@ export class ElasticService {
       const res = <Object[]>response['hits']['hits'];
       const items = [];
       for (const r of res)
-        items.push(this.highlight ? r['highlight']: r['_source']); //if "highlight" is selected then read the results from ['highlight'] property of thie ['hits']['hits']
+      {
+        //items.push(this.highlight ? r['highlight']: r['_source']); //if "highlight" is selected then read the results from ['highlight'] property of thie ['hits']['hits']
+        items.push([r['_source'],r['highlight']]); //put source and highlight in a 2d array
+      }
       return items;
     } else {
       const expansionGraph = this.aggregationGraph(query, response);
