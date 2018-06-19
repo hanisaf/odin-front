@@ -7,10 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { ElasticService } from '../elastic.service';
 import { HttpHandler, HttpClient } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'; 
+import { By } from '@angular/platform-browser/src/dom/debug/by';
 
 describe('DataViewComponent', () => {
   let component: DataViewComponent;
   let fixture: ComponentFixture<DataViewComponent>;
+  let select: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -34,4 +36,13 @@ describe('DataViewComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // it('should list all the columns of the current datasource', () => {
+  //   select = fixture.debugElement.query(By.css('mat-select')).nativeElement;
+  //   fixture.whenStable().then(() => {
+  //     fixture.detectChanges();
+  //     expect(select.nodeValue).toEqual('');
+  //   });
+
+  // });
 });

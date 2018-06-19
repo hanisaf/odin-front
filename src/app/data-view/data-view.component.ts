@@ -30,9 +30,9 @@ export class DataViewComponent implements OnInit {
   // @ViewChild(MatPaginator) paginator: MatPaginator;
 
   content(object, key) {
-    //object has its value in object[0], and if highlight available, the highlight is in object[0]
+    //object has its value in object[0], and if highlight available, the highlight is in object[1]
     //so, we decide which one to show by eliminating one of the dimensions
-    if (this.highlightMode && object[1] && object[1][key]) //if highlight is enabled, and highlight object is available, and current column's (key's) highlight is available
+    if (this.highlightMode && object[1] && object[1][key]) //if highlight mode is enabled, and highlight object is available, and current column's (key's) highlight is available
       object = object[1];
     else 
       object = object[0];

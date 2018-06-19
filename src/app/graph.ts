@@ -54,7 +54,6 @@ export class Graph implements OGraph {
   }
 
   getSelectedFields(): string[] {
-    //TODO fix it
     let fields = new Set<string>();
     for(let link of this.links) {
       if (link.selected)
