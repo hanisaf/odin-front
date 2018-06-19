@@ -220,11 +220,7 @@ export class ElasticService {
           const index = query.index;
           const selectedFields = query.selectedFields; 
 
-          //this.lastResponse = {results : "", index :"",  selectedFields: []}; //to store last data query to be used in data-view component
-          // this.lastResponse.results = results;
-          // this.lastResponse.index = index;
-          // this.lastResponse.selectedFields = selectedFields;
-          Data.setLastResponse(response);
+          //Data.setLastResponse(response);
           Data.setHit(index, results, selectedFields);
           this.msg.info('loaded ' + results.length + ' from ' + this.hits.get(index) + ' ' + index + ' documents');
         }
@@ -251,7 +247,7 @@ export class ElasticService {
       for (const r of res)
       {
         //items.push(this.highlight ? r['highlight']: r['_source']); //if "highlight" is selected then read the results from ['highlight'] property of thie ['hits']['hits']
-        items.push([r['_source'],r['highlight']]); //put source and highlight in a 2d array
+        items.push([r['_source'],r['highlight']]); //put both source and highlight in the result set as a 2d array
       }
       return items;
     } else {

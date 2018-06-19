@@ -9,10 +9,11 @@ import { Subject }    from 'rxjs/Subject';
 import {HttpClient} from  '@angular/common/http';
 export class Data {
     
-    static setLastResponse(response: any): any {
-    //this.lastResponse = {results : "", index :"",  selectedFields: []}; //to store last data query to be used in data-view component
-           this.lastResponse = response;
-  }
+//// to store last data query to be used in data-view component
+//     static setLastResponse(response: any): any {
+//     //this.lastResponse = {results : "", index :"",  selectedFields: []}; 
+//            this.lastResponse = response;
+//   }
     constructor() {
       }
     //value is set by the build script

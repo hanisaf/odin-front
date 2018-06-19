@@ -17,7 +17,7 @@ export class DataViewComponent implements OnInit {
   //@Input()
   dataColumns = [];
   _selectedSource: string;
-  highlight = false;
+  highlightMode = false;
 
   get selectedSource() {
     return this._selectedSource;
@@ -32,7 +32,7 @@ export class DataViewComponent implements OnInit {
   content(object, key) {
     //object has its value in object[0], and if highlight available, the highlight is in object[0]
     //so, we decide which one to show by eliminating one of the dimensions
-    if (this.highlight && object[1] && object[1][key]) //if highlight is enabled, and highlight object is available, and current column's (key's) highlight is available
+    if (this.highlightMode && object[1] && object[1][key]) //if highlight is enabled, and highlight object is available, and current column's (key's) highlight is available
       object = object[1];
     else 
       object = object[0];
@@ -173,7 +173,7 @@ export class DataViewComponent implements OnInit {
     this.dataSource = new MatTableDataSource<Object>();
     // this.dataSource.paginator = this.paginator;    
     Data.subscribeDataViewComponent(this);
-    this.highlight = elasticService.highlight;
+    this.highlightMode = elasticService.highlight;
     //Data.addSubscriber(this);
   }
   exportcsv()

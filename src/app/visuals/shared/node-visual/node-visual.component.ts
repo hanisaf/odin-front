@@ -116,6 +116,7 @@ export class NodeVisualComponent implements OnInit {
 
   // }
   data() {
+    this.node.selected = true;
     //console.log(this.node);
     //this.backendService.getData(this.node);
     for(let index of this.node.sources) {

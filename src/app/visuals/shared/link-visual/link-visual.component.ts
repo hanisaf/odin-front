@@ -30,6 +30,7 @@ export class LinkVisualComponent  {
   constructor(private elasticService: ElasticService,
   private msg: MessageService) {}
   data() {
+    this.link.selected = true;
     // let sources = new Set<string>();//union of data sources of the two nodes of the link
     // for(let s of this.link.source.sources)
     //   sources.add(s);
