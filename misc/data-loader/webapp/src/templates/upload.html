@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <style>
+            @font-face {
+                font-family: 'Fira Sans';
+                src: local('FiraSans-Regular'),
+                url('/media/fonts/FiraSans-Regular.woff2') format('woff2');
+            }
+
+            legend {
+                background-color: #000;
+                color: #fff;
+                padding: 3px 6px;
+            }
+
+            .output {
+                font: 1rem 'Fira Sans', sans-serif;
+            }
+
+            input {
+                margin: .4rem;
+            }
+        </style>
+    </head>
+   <body>
+    <!-- https://github.com/requests/requests/issues/2505#issuecomment-83198401 -->
+      <form action = "http://localhost:5000/uploader" method="POST" enctype="multipart/form-data">
+         <fieldset>
+                <legend>Raw Data</legend>
+                <div>
+                    <label for="file">File</label>
+                    <input type="file" name="file" />
+                </div>
+        </fieldset>
+         <fieldset>
+            <legend>Entities</legend>
+            <div>
+                <input type="radio" id="item1" value="yes" name="entities" checked />
+                <label for="yes">Yes</label>
+            </div>
+            <div>
+                <input type="radio" id="item2" value="no" name="entities" />
+                <label for="no">No</label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Upload</legend>
+            <div>
+                <label for="indexname">Index</label>
+                <input name="indexname" type="text" value="documents" />
+                <label for="serveraddress">Server</label>
+                <input name="serveraddress" type="text" value="http://localhost:9200" />
+                <label for="password">Password</label>
+                <input name="password" type="password" />
+                <input type = "submit" value="Upload"/>
+            </div>
+        </fieldset>
+      </form>
+
+   </body>
+</html>

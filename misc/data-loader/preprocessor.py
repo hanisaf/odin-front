@@ -118,10 +118,10 @@ def readfile(options):
     df = None
     filename=options.input
     if '.csv' in filename:
-        df=pd.read_csv(filename)
-    elif '.json' in filename:
+        df=pd.read_csv(filename, encoding = "utf-8")
+    elif ext in filename:
         df=pd.read_json(filename)
-    elif '.db' in filename:
+    elif ext in filename:
         df=pd.read_sql(options.query, lite.connect(filename))
     else:
         logging.error('Unknown file type')
@@ -153,7 +153,7 @@ def trim(tags):
 
 
 def process(options):
-    logging.info("Reading input file ... ")
+    print("Reading input file ... ")
     df = readfile(options)
     #df = df.head()
     logging.info("Preprocessing ...") 
