@@ -1,7 +1,7 @@
 {
-  "elastic_url" : "http://odin.law.uga.edu:9200",
+  "elastic_url2" : "http://odin.law.uga.edu:9200",
   "elastic_url1" : "http://localhost:9200",
-  "elastic_url2": "http://open-data.stream:9999",
+  "elastic_url": "http://open-data.stream:9200",
   "elastic_url3": "http://vps89211.vps.ovh.ca:9999",
   "//": "restrict to list of indices, no restrictions if empty",
   "elastic_indices1": ["earning-calls-full", "tweets", "html5"],
@@ -9,7 +9,7 @@
 
   "page_size": 10,
   "default_index" : "jobs-act",
-  "default_fields" : ["status_at"],
+  "default_fields" : ["status_at","text"],
   "default_types": [],
   "default_query" : "compensation",
   "default_breadth" : 15,

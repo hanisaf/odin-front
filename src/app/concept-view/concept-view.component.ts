@@ -65,6 +65,15 @@ export class ConceptViewComponent implements OnInit {
     .subscribe(
       response => {
         this.concept.fields = this.elasticService.OD(query, response);
+        //ensure prior selected fields are valid
+        let newSelectedFields = [];
+        let sourceFields = new Set(this.concept.fields);
+        for(let f of this.concept.selectedFields) {
+          if(sourceFields.has(f)) {
+            newSelectedFields.push(f);
+          }
+        }
+        this.concept.selectedFields=newSelectedFields;
       }
       );
    }
@@ -93,6 +102,7 @@ export class ConceptViewComponent implements OnInit {
   changeIndex() {
     this.getFields(this.concept.source);
     this.getTypes(this.concept.source);
+
     this.messageService.log("changed index to " + "this.index_value, ConceptViewComponent.changeIndex()");
   }
 
