@@ -17,7 +17,7 @@ export class Data {
     constructor() {
       }
     //value is set by the build script
-    static build = "Sun Apr 15 16:33:10 EDT 2018";
+    static build = "Tue Jul 24 15:31:52 EDT 2018";
 
     //static lastResponse: any = {};
     static concepts: Concept[] = [];
