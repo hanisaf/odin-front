@@ -17,6 +17,10 @@ U.S. law provides boundless access to data about U.S. lawmaking to the public: t
 
 With a planning grant from the Institute of Museum and Library Services ([IMLS](https://www.imls.gov/)), we collected open data arising from the passing of the Jumpstart Our Business Startups Act of 2012 (JOBS Act). The act was publicly deliberated by many groups, which left an abundance of fragmented open data including: different versions of bills, amendments, co-sponsors, activity of political action committees, details of regulators’ meetings with the general public, and public comment on administrative rulemaking. In particular, we combined data from GovTrack with full-text data from the Congressional Record. This data serves as the test bed for ODIN and shows the value of integrating and linking various data types. We present here the following guided walkthoughs:
 
+* item 1
+
+* item 2
+
 # Explore our data!
 
 Beyond the previous use cases, ODIN allows for open-ended exploration of various data sets. Right now we have a version for our target application the JOBS Act. In addition, we offer a full version with multiple data sets from different domains and more advanced options. 
