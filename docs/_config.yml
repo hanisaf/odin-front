@@ -1,1 +1,6 @@
-theme: jekyll-theme-modernist
+title: Open Data Innovation
+logo: /assets/img/logo.png
+description: 
+show_downloads: false
+google_analytics:
+theme: jekyll-theme-minimal
