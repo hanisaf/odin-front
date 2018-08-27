@@ -17,7 +17,7 @@ U.S. law provides boundless access to data about U.S. lawmaking to the public: t
 
 With a planning grant from the Institute of Museum and Library Services ([IMLS](https://www.imls.gov/)), we collected open data arising from the passing of the Jumpstart Our Business Startups Act of 2012 (JOBS Act). The act was publicly deliberated by many groups, which left an abundance of fragmented open data including: different versions of bills, amendments, co-sponsors, activity of political action committees, details of regulators’ meetings with the general public, and public comment on administrative rulemaking. In particular, we combined data from GovTrack with full-text data from the Congressional Record. This data serves as the test bed for ODIN and shows the value of integrating and linking various data types. We present here the following guided walkthoughs:
 
-* item 1
+* [Executive compensation](https://open-data.stream/app/?config=jobs-act&data=executive-compensation&tour=executive-compensation): In the JOBS Act, what are the bills that relate to executive compensation? Who amended these bills?
 
 * item 2
 
