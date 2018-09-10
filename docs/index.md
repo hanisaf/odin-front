@@ -4,6 +4,8 @@ layout: default
 
 # Welcome to the Open Data Innovation Project!
 
+*[Watch Video](https://www.youtube.com/embed/XldulI-WEJ4?rel=0)
+
 “In a knowledge-rich world, progress does not lie in the direction of reading and writing information faster or storing more of it. Progress lies in the direction of extracting and exploiting the patterns of the world so that far less information needs to be read, written, or stored.” (Herbert Simon, 1971) 
 
 While the availability of big data and the advancement of methods to analyze them allow researchers to test hypotheses and validate theories, it is not clear how it can facilitate exploration and inductive understanding of social phenomena especially when data is unstructured, making it less amenable to quantification and computation.
@@ -19,12 +21,15 @@ With a planning grant from the Institute of Museum and Library Services ([IMLS](
 
 * [Executive compensation](https://open-data.stream/app/?config=jobs-act&data=executive-compensation&tour=executive-compensation): In the JOBS Act, what are the bills that relate to executive compensation? Who amended these bills?
 
-* item 2
+* [Shareholders](https://open-data.stream/app/?config=jobs-act&amp;data=shareholders&amp;tour=shareholders):  What are the amendments with shareholders in their text? Who are the senators and representatives who sponsored them and from what states?
 
 # Explore our data!
 
 Beyond the previous use cases, ODIN allows for open-ended exploration of various data sets. Right now we have a version for our target application the JOBS Act. In addition, we offer a full version with multiple data sets from different domains and more advanced options. 
 
+* [ODIN (Jobs Act)] (https://open-data.stream/app?config=jobs-act)
 # Explore your data!
 
  ODIN is an open-source project. It can be used with all kind of data. We appreciate community feedback and contribution! 
+ * [ODIN (In Github)] (https://github.com/hanisaf/odin-front)
+ 
