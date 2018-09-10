@@ -27,6 +27,9 @@ With a planning grant from the Institute of Museum and Library Services ([IMLS](
 
 Beyond the previous use cases, ODIN allows for open-ended exploration of various data sets. Right now we have a version for our target application the JOBS Act. In addition, we offer a full version with multiple data sets from different domains and more advanced options. 
 
+* [ODIN (Jobs Act)] (https://open-data.stream/app?config=jobs-act)
 # Explore your data!
 
  ODIN is an open-source project. It can be used with all kind of data. We appreciate community feedback and contribution! 
+ * [ODIN (In Github)] (https://github.com/hanisaf/odin-front)
+ 
