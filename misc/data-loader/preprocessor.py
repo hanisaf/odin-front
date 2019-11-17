@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # In[ ]:
@@ -118,10 +118,10 @@ def readfile(options):
     df = None
     filename=options.input
     if '.csv' in filename:
-        df=pd.read_csv(filename, encoding = "utf-8")
-    elif ext in filename:
+        df=pd.read_csv(filename)
+    elif '.json' in filename:
         df=pd.read_json(filename)
-    elif ext in filename:
+    elif '.db' in filename:
         df=pd.read_sql(options.query, lite.connect(filename))
     else:
         logging.error('Unknown file type')
@@ -142,24 +142,28 @@ def readfile(options):
 
 
 def trim(tags):
-    tags = tags.split(',')
-    ntags = map(lambda x: x.strip(), tags)
-    if ntags == [""]:
-        ntags=[]
-    return ntags
+    try:
+        tags = tags.split(',')
+        ntags = [x.strip() for x in tags]
+        if ntags == [""]:
+            ntags=[]
+        return ntags
+    except:
+        return []
 
 
 # In[ ]:
 
 
 def process(options):
-    print("Reading input file ... ")
+    logging.info("Reading input file ... ")
     df = readfile(options)
     #df = df.head()
     logging.info("Preprocessing ...") 
     #df = df.fillna("")
     df.columns = map(lambda x: x.replace('.', '__'), df.columns)
     #del df['index']
+    #df['timestamp'] = pd.to_datetime(df['timestamp']).apply(lambda x: str(x.to_datetime64()))
     cols = set(df.columns) - set(['text', 'timestamp'])
     for col in cols:
         if col[-1] == 's': #a  text tag column
@@ -241,14 +245,14 @@ if __name__ == "__main__":
     exit()
 
 
-# In[24]:
+# In[2]:
 
 
 get_ipython().system('jupyter nbconvert --to script preprocessor.ipynb')
 
 
-# In[20]:
+# In[ ]:
 
 
-get_ipython().magic('pinfo pd.DataFrame.to_json')
+
 

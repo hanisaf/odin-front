@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # In[6]:
@@ -152,7 +152,7 @@ def process(options):
             logging.error("Cannot process document %d" %i)
             logging.error(type(inst))
             logging.error(inst)
-            logging.error(d)
+            logging.error(i)
         if i % 1000 == 0:
             logging.info("%d documents processed" % i)   
     logging.info("%d documents processed" % i)
@@ -201,8 +201,14 @@ if __name__ == "__main__":
     exit()
 
 
-# In[12]:
+# In[13]:
 
 
 get_ipython().system('jupyter nbconvert --to script indexer.ipynb')
+
+
+# In[ ]:
+
+
+
 
