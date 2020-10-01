@@ -4,7 +4,7 @@ layout: default
 
 # Welcome to the Open Data Innovation Project!
 
-![Watch Video](https://www.youtube.com/embed/XldulI-WEJ4?rel=0)
+*[Watch Video](https://www.youtube.com/embed/XldulI-WEJ4?rel=0)
 
 “In a knowledge-rich world, progress does not lie in the direction of reading and writing information faster or storing more of it. Progress lies in the direction of extracting and exploiting the patterns of the world so that far less information needs to be read, written, or stored.” (Herbert Simon, 1971) 
 
