@@ -1,7 +1,7 @@
 {
   "//": "json has no comments, this is a workaround",
-  "elastic_url2" : "http://odin.law.uga.edu:9200",
-  "elastic_url": "http://open-data.stream:9200",
+  "elastic_url" : "https://read-only:qkacouxkgipjngivalwjcaerapdyntkq@thorin-us-east-1.searchly.com",
+  "elastic_url2": "http://open-data.stream:9200",
   "elastic_url1": "http://vps89211.vps.ovh.ca:9999",
 
   "//elastic_indices": "restrict to list of indices, no restrictions if empty",
