@@ -8,10 +8,10 @@
   "elastic_indices" : ["earning-calls","jobs-act", "resilient-cities", "tweets", "coded_tweets"], 
 
   "page_size": 10,
-  "default_index" : "jobs-act",
-  "default_fields" : ["status_at","text"],
+  "default_index" : "earning-calls",
+  "default_fields" : ["text"],
   "default_types": [],
-  "default_query" : "compensation",
+  "default_query" : "clean energy",
   "default_breadth" : 15,
   "default_certainty" : 1,
   "default_depth": 0,
