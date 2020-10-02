@@ -37,6 +37,7 @@
   gtag('config', 'UA-113143123-1');
 </script>
 
+
 </head>
 
 <body>
@@ -189,6 +190,19 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+  <!-- warmup backend -->
+  <script>
+    $(document).ready(function() {
+      console.log("warming up backend");
+      $.ajax({
+        type: 'GET',
+        url: 'https://odin-elasticsearch-demo-y64vy37zlq-uc.a.run.app',
+        success: function() {
+          console.log("warmup success");
+        }
+      });
+    });
+    </script>
 </body>
 
 </html>
