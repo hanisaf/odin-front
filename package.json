@@ -27,7 +27,7 @@
     "@angular/router": "^5.2.11",
     "angular-async-local-storage": "^3.1.4",
     "core-js": "^2.5.7",
-    "d3": "^4.12.2",
+    "d3": "^7.6.1",
     "jasmine-marbles": "^0.3.1",
     "ngx-cookie-service": "^1.0.10",
     "ngx-tour-md-menu": "^2.0.0-rc.2",
