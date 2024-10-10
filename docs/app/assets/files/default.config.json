@@ -1,7 +1,7 @@
 {
   "elastic_url2" : "http://odin.law.uga.edu:9200",
   "elastic_url1" : "http://localhost:9200",
-  "elastic_url": "https://elasticsearch-cloud-demo-2mebflox3q-ue.a.run.app",
+  "elastic_url": "https://elasticsearch-cloud-demo-823117314198.us-central1.run.app",
   "elastic_url3": "http://vps89211.vps.ovh.ca:9999",
   "//": "restrict to list of indices, no restrictions if empty",
   "elastic_indices1": ["earning-calls-full", "tweets", "html5"],
