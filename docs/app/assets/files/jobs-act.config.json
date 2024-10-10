@@ -1,6 +1,6 @@
 {
   "//": "json has no comments, this is a workaround",
-  "elastic_url" : "https://elasticsearch-cloud-demo-2mebflox3q-ue.a.run.app",
+  "elastic_url" : "https://elasticsearch-cloud-demo-823117314198.us-central1.run.app",
   "elastic_url2": "http://open-data.stream:9200",
   "elastic_url1": "http://vps89211.vps.ovh.ca:9999",
 
